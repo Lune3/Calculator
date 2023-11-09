@@ -1,0 +1,22 @@
+body{
+    position: relative;
+    height: 100vh;
+    margin: 0;
+}
+
+.mainBody{
+    position: absolute;
+    right: 50vw;
+    bottom: 55vh;
+    background-color: #403d4e;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 250px;
+    width: 350px;
+}
+
+.calculatorName p{
+    color: #d9d7e4;
+}
