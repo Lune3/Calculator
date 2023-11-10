@@ -1,22 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
+
 body{
-    position: relative;
-    height: 100vh;
+    display: flex;
     margin: 0;
+    justify-content: center;
+    align-items: center;
+    min-height: 750px;
 }
 
 .mainBody{
-    position: absolute;
-    right: 50vw;
-    bottom: 55vh;
     background-color: #403d4e;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 250px;
+    min-height: 450px;
     width: 350px;
 }
 
-.calculatorName p{
-    color: #d9d7e4;
+.calculatorName{
+    align-self: center;
+    margin-top: 25px;
+
 }
+
+.calculatorName p{
+    color: #b4b3bd;
+}
+
+.name{
+    margin: 0;
+    font-size: 24px;
+    font-family: 'Russo One', sans-serif;
+    margin-bottom: 25px;
+}
+
+.model{
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    font-size: 15px;
+}
+
+.displayScreen{
+    width: 300px;
+    height: 75px;
+    background-color: #9aa594;
+}
+
