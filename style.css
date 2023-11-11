@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mukta:wght@400;500;600&family=Roboto:wght@400;500&family=Russo+One&display=swap');
 @font-face{
     font-family:'digital-clock-font';
     src: url('Fonts/Technology-Bold.ttf');
@@ -41,6 +41,7 @@ body{
 .model{
     text-align: center;
     font-family: 'Roboto', sans-serif;
+    font-weight: 500;
     font-size: 15px;
 }
 
@@ -77,8 +78,24 @@ body{
 }
 
 .row button{
-    height: 45px;
+    height: 40px;
     width: 45px;
     border-radius: 10px 10px 15px 15px;
+    font-size: 30px;
+    font-family: 'Mukta', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #848398;
+    color: #e2e3ee;
+}
+
+.backSpace,.clear{
+    background-color: #be7695 !important;
+}
+
+.modulo,.divide,.sqrt,.product,.subtract,.evaluate,.add{
+    background-color: #15161f !important;
+    columns: #eeeff5 !important;
 }
 
