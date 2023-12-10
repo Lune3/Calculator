@@ -17,7 +17,7 @@ body{
     display: flex;
     flex-direction: column;
     min-height: 475px;
-    width: 350px;
+    width: 335px;
     border-radius: 20px 20px 30px 30px;
 }
 
