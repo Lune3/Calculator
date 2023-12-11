@@ -17,8 +17,10 @@ function buttonInput(){
 function checkSize(){
     let screen = document.querySelector(".userInput");
     if(screen.offsetWidth > 300){
-        let sizeOfFont = screen.style.fontSize;
-        screen.style.fontSize = `${sizeOfFont - (parseInt(screen.offsetWidth) - 300)}px`;
+        let screenCSS = window.getComputedStyle(screen);
+        screenFontSize = screenCSS.getPropertyValue("font-size");
+        screenFontSize = parseInt(screenFontSize.slice(0,screenFontSize.length - 2));
+        screen.style.fontSize = `${screenFontSize - (parseInt(screen.offsetWidth) - 300)}px`;
     }
 }
 
