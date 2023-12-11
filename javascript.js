@@ -1,4 +1,4 @@
-//will update the screen value after a button press
+//will update the display screen after a button press
 function buttonInput(){
     const buttons = document.querySelectorAll("button");
     buttons.forEach((button) => {
@@ -7,13 +7,16 @@ function buttonInput(){
             screenUpdater(e.target.textContent);
             checkSize();
             }
-            else{
-
+            else if(e.target.textContent === "AC" || e.target.textContent === "C"){
+                backSpace(e.target.textContent);
+                checkSize();
             }
         })
     });  
 }
 
+
+//Will check for font size on display Screen if it try to get out of the screen this will reduce it
 function checkSize(){
     let screen = document.querySelector(".userInput");
     if(screen.offsetWidth > 300){
@@ -27,6 +30,17 @@ function checkSize(){
 function screenUpdater(userInput){
     let screen = document.querySelector(".userInput");
     screen.textContent = screen.textContent.concat(userInput);
+}
+
+function backSpace(userInput){
+    let display = document.querySelector(".userInput");
+    if(userInput === "AC"){
+        display.textContent = "";
+        display.style.fontSize = "72px";
+    }
+    else{
+        display.textContent = display.textContent.slice(0,display.textContent.length - 1);
+    }
 }
 
 function main(){
