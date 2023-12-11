@@ -4,12 +4,11 @@ function buttonInput(){
     buttons.forEach((button) => {
         button.addEventListener("click",(e) =>{
             if(e.target.textContent != "AC" && e.target.textContent != "C" && e.target.textContent != "="){
-            screenUpdater(e.target.textContent);
-            checkSize();
+                screenUpdater(e.target.textContent);
+                checkSize();
             }
             else if(e.target.textContent === "AC" || e.target.textContent === "C"){
                 backSpace(e.target.textContent);
-                checkSize();
             }
         })
     });  
