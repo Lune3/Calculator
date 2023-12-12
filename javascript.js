@@ -1,9 +1,12 @@
-//will update the display screen after a button press
+//will call the appropriate function after button press
 function buttonInput(){
     const buttons = document.querySelectorAll("button");
     buttons.forEach((button) => {
         button.addEventListener("click",(e) =>{
-            if(e.target.textContent != "AC" && e.target.textContent != "C" && e.target.textContent != "="){
+            if(checkForError(e.target.textContent)){
+                screenUpdater("ERROR");
+            }
+            else if(e.target.textContent != "AC" && e.target.textContent != "C" && e.target.textContent != "="){
                 screenUpdater(e.target.textContent);
                 checkSize();
             }
@@ -26,9 +29,15 @@ function checkSize(){
     }
 }
 
+//Updates the display screen
 function screenUpdater(userInput){
     let screen = document.querySelector(".userInput");
+    if(userInput === "ERROR"){
+        screen.textContent = userInput;
+    }
+    else{
     screen.textContent = screen.textContent.concat(userInput);
+    }
 }
 
 function backSpace(userInput){
@@ -41,6 +50,30 @@ function backSpace(userInput){
         display.textContent = display.textContent.slice(0,display.textContent.length - 1);
     }
 }
+
+function isBinaryOperator(userInput){
+    if(userInput === "+" || userInput === "-" || userInput === "×" || userInput === "÷" || userInput === "%"){
+        return true;
+    }
+    return false;
+}
+
+function isUnaryOperator(userInput){
+    if(userInput === "√") return true;
+    return false;
+}
+
+function checkForError(userInput){
+    let display = document.querySelector(".userInput");
+    if(display.textContent === "" && isBinaryOperator(userInput)){
+        return true;
+    }
+    return false;
+}
+
+let operand1;
+let operator;
+let operand2;
 
 function main(){
     buttonInput();

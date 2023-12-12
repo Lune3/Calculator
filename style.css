@@ -5,6 +5,7 @@
    }
 
 body{
+    background-color: grey;
     display: flex;
     margin: 0;
     justify-content: center;
