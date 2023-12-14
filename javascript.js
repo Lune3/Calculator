@@ -5,6 +5,7 @@ function buttonInput(){
     buttons.forEach((button) => 
     {
         button.addEventListener("click",(e) =>{
+            clickAudio();   
             let input = e.target.textContent;
             if(checkForError(input))
             {
@@ -154,6 +155,11 @@ function percent(operand1,operand2){
 
 function squareRoot(operand1){
     return Math.sqrt(operand1);
+}
+
+function clickAudio(){
+    let audio = new Audio("Sounds/click-button-140881.mp3");
+    audio.play();
 }
 
 buttonInput();
