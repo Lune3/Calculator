@@ -2,21 +2,26 @@
 function buttonInput(){
     const buttons = document.querySelectorAll("button");
     let operand1,operator,operand2;
-    buttons.forEach((button) => {
+    buttons.forEach((button) => 
+    {
         button.addEventListener("click",(e) =>{
             let input = e.target.textContent;
-            if(checkForError(input)){
+            if(checkForError(input))
+            {
                 screenUpdater("ERROR");
             }
-            else if(input != "AC" && input != "C" && input != "="){
-                if(isBinaryOperator(input)){
+            else if(input != "AC" && input != "C" && input != "=")
+            {
+                if(isBinaryOperator(input))
+                {
                     operator = input;
                     operand1 = currentDisplay();
                     backSpace("AC");
                 }
-                else{
-                screenUpdater(input);
-                checkSize();
+                else
+                {
+                    screenUpdater(input);
+                    checkSize();
                 }
             }
             else if(input === "AC" || input === "C"){
@@ -25,17 +30,21 @@ function buttonInput(){
             else if(input === "="){
                 operand2 = currentDisplay();
                 backSpace("AC");
-                if(operand2.charAt(0) === "√"){
+                if(operand2.charAt(0) === "√")
+                {
                     screenUpdater(`${squareRoot(parseInt(operand2.substring(1,operand2.length)))}`);
                 }
-                else{
+                else
+                {
                     let result = evaluate(parseInt(operand1),operator,parseInt(operand2));
-                    if(result === NaN || result === undefined || result === Infinity){
+                    if(result === NaN || result === undefined || result === Infinity)
+                    {
                         screenUpdater("ERROR");
                     }
-                    else{
-                    screenUpdater(`${result}`);
-                    checkSize();
+                    else
+                    {
+                        screenUpdater(`${result}`);
+                        checkSize();
                 }
             }
         }
