@@ -37,8 +37,8 @@ function buttonInput(){
                 }
                 else
                 {
-                    let result = evaluate(parseInt(operand1),operator,parseInt(operand2));
-                    if(result === NaN || result === undefined || result === Infinity)
+                    let result = evaluate(parseFloat(operand1),operator,parseFloat(operand2));
+                    if(result == NaN || result == undefined || result == Infinity)
                     {
                         screenUpdater("ERROR");
                     }
@@ -73,6 +73,7 @@ function screenUpdater(userInput){
     else{
     screen.textContent = screen.textContent.concat(userInput);
     }
+    checkSize();
 }
 
 function currentDisplay(){
