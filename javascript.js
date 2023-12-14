@@ -25,10 +25,21 @@ function buttonInput(){
             else if(input === "="){
                 operand2 = currentDisplay();
                 backSpace("AC");
-                let result = evaluate(parseInt(operand1),operator,parseInt(operand2));
-                screenUpdater(`${result}`);
+                if(operand2.charAt(0) === "√"){
+                    screenUpdater(`${squareRoot(parseInt(operand2.substring(1,operand2.length)))}`);
+                }
+                else{
+                    let result = evaluate(parseInt(operand1),operator,parseInt(operand2));
+                    if(result === NaN || result === undefined || result === Infinity){
+                        screenUpdater("ERROR");
+                    }
+                    else{
+                    screenUpdater(`${result}`);
+                    checkSize();
+                }
             }
-        })
+        }
+    })
     });  
 }
 
@@ -51,7 +62,6 @@ function screenUpdater(userInput){
     }
     else{
     screen.textContent = screen.textContent.concat(userInput);
-    return screen.textContent;
     }
 }
 
@@ -106,6 +116,9 @@ function evaluate(operand1,operator,operand2){
         case "÷":
             result = divide(operand1,operand2);
             break;
+        case "%":
+            result = percent(operand1,operand2);
+            break;
     }
     return result;
 }
@@ -124,6 +137,14 @@ function multiply(operand1,operand2){
 
 function divide(operand1,operand2){
     return operand1/operand2;
+}
+
+function percent(operand1,operand2){
+    return (operand1/operand2) * 100;
+}
+
+function squareRoot(operand1){
+    return Math.sqrt(operand1);
 }
 
 buttonInput();
