@@ -1,22 +1,36 @@
 //will call the appropriate function after button press
 function buttonInput(){
     const buttons = document.querySelectorAll("button");
+    let operand1,operator,operand2;
     buttons.forEach((button) => {
         button.addEventListener("click",(e) =>{
-            if(checkForError(e.target.textContent)){
+            let input = e.target.textContent;
+            if(checkForError(input)){
                 screenUpdater("ERROR");
             }
-            else if(e.target.textContent != "AC" && e.target.textContent != "C" && e.target.textContent != "="){
-                screenUpdater(e.target.textContent);
+            else if(input != "AC" && input != "C" && input != "="){
+                if(isBinaryOperator(input)){
+                    operator = input;
+                    operand1 = currentDisplay();
+                    backSpace("AC");
+                }
+                else{
+                screenUpdater(input);
                 checkSize();
+                }
             }
-            else if(e.target.textContent === "AC" || e.target.textContent === "C"){
-                backSpace(e.target.textContent);
+            else if(input === "AC" || input === "C"){
+                backSpace(input);
+            }
+            else if(input === "="){
+                operand2 = currentDisplay();
+                backSpace("AC");
+                let result = evaluate(parseInt(operand1),operator,parseInt(operand2));
+                screenUpdater(`${result}`);
             }
         })
     });  
 }
-
 
 //Will check for font size on display Screen if it try to get out of the screen this will reduce it
 function checkSize(){
@@ -37,7 +51,13 @@ function screenUpdater(userInput){
     }
     else{
     screen.textContent = screen.textContent.concat(userInput);
+    return screen.textContent;
     }
+}
+
+function currentDisplay(){
+    let screen = document.querySelector(".userInput");
+    return screen.textContent;
 }
 
 function backSpace(userInput){
@@ -71,14 +91,40 @@ function checkForError(userInput){
     return false;
 }
 
-let operand1;
-let operator;
-let operand2;
-
-function main(){
-    buttonInput();
-
+function evaluate(operand1,operator,operand2){
+    let result = 0;
+    switch (operator){
+        case "+":
+            result = add(operand1,operand2);
+            break;
+        case "-":
+            result = subtract(operand1,operand2);
+            break;
+        case "×":
+            result = multiply(operand1,operand2);
+            break;
+        case "÷":
+            result = divide(operand1,operand2);
+            break;
+    }
+    return result;
 }
 
-main();
+function add(operand1,operand2){
+    return operand1 + operand2;
+}
+
+function subtract(operand1,operand2){
+    return operand1 - operand2;
+}
+
+function multiply(operand1,operand2){
+    return operand1 * operand2;
+}
+
+function divide(operand1,operand2){
+    return operand1/operand2;
+}
+
+buttonInput();
 
